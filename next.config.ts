@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig: import('next').NextConfig = {
+const nextConfig: import("next").NextConfig = {
   reactStrictMode: true,
 
   images: {
@@ -65,6 +65,15 @@ const nextConfig: import('next').NextConfig = {
         {
           key: "X-Content-Type-Options",
           value: "nosniff",
+        },
+      ],
+    },
+    {
+      source: "/:all*(mp4|webm)",
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "public, max-age=31536000, immutable",
         },
       ],
     },
