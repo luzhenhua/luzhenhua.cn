@@ -5,7 +5,7 @@ export const DATA = {
   name: "katon",
   username: "hellokaton",
   initials: "PN",
-  url: "https://newhome-tau.vercel.app",
+  url: "https://hellokaton.me",
   location: "China",
   locationLink: "https://www.google.com/maps/place/china",
   description: "全栈开发者 × 技术分享者，探索独立开发。",
