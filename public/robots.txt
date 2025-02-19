@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://hellokaton.me/sitemap.xml
+
+# Assets
+Allow: /favicons/
+Allow: /images/
+Allow: /static/
+
+# Disallow dynamic URLs
+Disallow: /api/
+Disallow: /*?*
