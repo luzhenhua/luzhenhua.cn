@@ -50,6 +50,7 @@ export const DATA = {
     "Linux",
     "RestAPI",
     "AI API",
+    "SEO",
   ],
   videos: [],
   navbar: [
