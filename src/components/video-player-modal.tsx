@@ -1,6 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import {
   Dialog,
   DialogContent,
@@ -8,18 +7,17 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-// 动态导入 ReactPlayer
-const ReactPlayer = dynamic(() => import("react-player/lazy"), {
-  loading: () => (
-    <div className="w-full h-[60vh] animate-pulse bg-muted rounded-lg" />
-  ),
-  ssr: false,
-});
-
 interface VideoPlayerModalProps {
   isOpen: boolean;
   onClose: () => void;
   videoUrl: string;
+}
+
+function getYouTubeEmbedUrl(url: string) {
+  const regExp = /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  const videoId = match && match[1];
+  return videoId ? `https://www.youtube.com/embed/${videoId}` : "";
 }
 
 export function VideoPlayerModal({
@@ -27,16 +25,24 @@ export function VideoPlayerModal({
   onClose,
   videoUrl,
 }: VideoPlayerModalProps) {
+  const embedUrl = getYouTubeEmbedUrl(videoUrl);
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl">
-        <div className="aspect-video">
-          <ReactPlayer
-            url={videoUrl}
-            width="100%"
-            height="100%"
-            controls
-            playing
+      <DialogContent className="max-w-[90vw] md:max-w-[80vw] lg:max-w-[1200px] p-2 md:p-4 h-auto">
+        <DialogHeader className="mb-2">
+          <DialogTitle className="text-base md:text-lg line-clamp-1">
+            {videoUrl}
+          </DialogTitle>
+        </DialogHeader>
+        <div className="relative w-full aspect-video">
+          <iframe
+            src={embedUrl}
+            title={videoUrl}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-full rounded-lg"
+            style={{ border: "none" }}
           />
         </div>
       </DialogContent>
