@@ -204,6 +204,11 @@ export const DATA = {
           href: "https://github.com/hellokaton/pixiv-helper",
           icon: <Icons.globe className="size-3" />,
         },
+        {
+          type: "Source",
+          href: "https://github.com/hellokaton/pixiv-helper",
+          icon: <Icons.github className="size-3" />,
+        },
       ],
       image: "",
       video: "https://static.hellokaton.me/video/pixiv_helper.mp4",
