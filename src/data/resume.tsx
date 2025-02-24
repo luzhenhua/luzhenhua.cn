@@ -174,7 +174,7 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
         {
-          type: "Source",
+          type: "源码",
           href: "https://github.com/hellokaton/namesage",
           icon: <Icons.github className="size-3" />,
         },
@@ -205,7 +205,7 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
         {
-          type: "Source",
+          type: "源码",
           href: "https://github.com/hellokaton/pixiv-helper",
           icon: <Icons.github className="size-3" />,
         },
