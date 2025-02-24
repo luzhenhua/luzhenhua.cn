@@ -136,12 +136,30 @@ export const DATA = {
       video: "https://static.hellokaton.me/video/bioify.mp4",
     },
     {
+      title: "荧数",
+      href: "https://yingshu.hellokaton.me",
+      dates: "2025/02",
+      active: true,
+      description:
+        "一个帮助社交媒体影响者创建关注者达成的里程碑动画，支持多种效果、自定义背景和用户信息。",
+      technologies: ["Next.js", "OriginUI", "MagicUI", "canvas-"],
+      links: [
+        {
+          type: "网址",
+          href: "https://yingshu.hellokaton.me",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/images/yingshu_hero.png",
+      video: "",
+    },
+    {
       title: "NameSage",
       href: "https://namesage.hellokaton.me",
       dates: "2025/01",
       active: true,
       description:
-        "一个现代的 Web 应用，帮助非中文母语者创建有意义且文化适宜的中文名字，使用Next.js构建，采用新野蛮主义设计风格。",
+          "一个现代的 Web 应用，帮助非中文母语者创建有意义且文化适宜的中文名字，使用Next.js构建，采用新野蛮主义设计风格。",
       technologies: [
         "Next.js",
         "neobrutalism",
@@ -163,24 +181,6 @@ export const DATA = {
       ],
       image: "",
       video: "https://static.hellokaton.me/video/namesage.mp4",
-    },
-    {
-      title: "荧数",
-      href: "https://yingshu.hellokaton.me",
-      dates: "2025/02",
-      active: true,
-      description:
-        "一个帮助社交媒体影响者创建关注者达成的里程碑动画，支持多种效果、自定义背景和用户信息。",
-      technologies: ["Next.js", "OriginUI", "MagicUI", "canvas-"],
-      links: [
-        {
-          type: "网址",
-          href: "https://yingshu.hellokaton.me",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "/images/yingshu_hero.png",
-      video: "",
     },
     {
       title: "Pixiv 插画下载器",
