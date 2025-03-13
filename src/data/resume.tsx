@@ -125,15 +125,32 @@ export const DATA = {
           href: "https://bioify.co",
           icon: <Icons.globe className="size-3" />,
         },
-        // {
-        //   type: "源码",
-        //   href: "https://github.com/StarKnightt/ResumeBuilder",
-        //   icon: <Icons.github className="size-3" />,
-        // },
       ],
-
-      image: "",
-      video: "https://static.hellokaton.me/video/bioify.mp4",
+      image: "/images/bioify_hero.png",
+      video: "",
+    },
+    {
+      title: "Github中文区排行",
+      href: "https://china-ranking.32k.site",
+      dates: "2025/03",
+      active: true,
+      description:
+          "区分中国区 Github 排行榜开发者和 Markdown 工程师，每日更新。",
+      technologies: ["Astro", "Tailwindcss", "GithubAction"],
+      links: [
+        {
+          type: "网址",
+          href: "https://china-ranking.32k.site",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "源码",
+          href: "https://github.com/hellokaton/china-ranking",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/images/ranking_hero.png",
+      video: "",
     },
     {
       title: "荧数",
@@ -142,7 +159,7 @@ export const DATA = {
       active: true,
       description:
         "一个帮助社交媒体影响者创建关注者达成的里程碑动画，支持多种效果、自定义背景和用户信息。",
-      technologies: ["Next.js", "OriginUI", "MagicUI", "canvas-"],
+      technologies: ["Next.js", "OriginUI", "MagicUI", "canvas-confetti"],
       links: [
         {
           type: "网址",
@@ -179,8 +196,8 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
-      video: "https://static.hellokaton.me/video/namesage.mp4",
+      image: "/images/namesage_hero.png",
+      video: "",
     },
     {
       title: "Pixiv 插画下载器",
