@@ -1,8 +1,8 @@
 // components/social-icon-link.tsx
-'use client';
+"use client";
 
-import BlurFade from './magicui/blur-fade';
-import Link from 'next/link';
+import BlurFade from "./magicui/blur-fade";
+import Link from "next/link";
 
 type SocialIconLinkProps = {
   name: string;
@@ -11,7 +11,12 @@ type SocialIconLinkProps = {
   delay: number;
 };
 
-export function SocialIconLink({ name, url, icon, delay }: SocialIconLinkProps) {
+export function SocialIconLink({
+  name,
+  url,
+  icon,
+  delay,
+}: SocialIconLinkProps) {
   return (
     <BlurFade delay={delay}>
       <div className="group relative">
@@ -22,7 +27,7 @@ export function SocialIconLink({ name, url, icon, delay }: SocialIconLinkProps) 
           aria-label={name}
           className="flex items-center justify-center p-3 rounded-xl bg-card hover:bg-accent/50 transition-all duration-200"
         >
-          <div className="w-6 h-6 flex items-center justify-center">
+          <div className="w-6 h-6 flex items-center justify-center text-foreground">
             {icon}
           </div>
         </Link>
