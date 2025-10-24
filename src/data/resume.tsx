@@ -109,31 +109,6 @@ export const DATA = {
 
   projects: [
     {
-      title: "Katonai",
-      href: "https://api.katonai.dev",
-      dates: "",
-      active: true,
-      description:
-        "一个稳定可靠的 AI 大模型 API 代理服务，整合了 OpenAI、Claude、Gemini 等主流模型接口。帮助开发者更便捷地接入各类 AI 能力，省去繁琐的对接流程，专注于产品创新本身。",
-      technologies: [
-        "AI API",
-        "OpenAI",
-        "Claude",
-        "Gemini",
-        "API Gateway",
-        "Next.js",
-      ],
-      links: [
-        {
-          type: "网站",
-          href: "https://api.katonai.dev",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "",
-      video: "",
-    },
-    {
       title: "Bioify",
       href: "https://bioify.co",
       dates: "",
