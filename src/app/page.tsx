@@ -11,8 +11,8 @@ import { Metadata } from "next";
 import { Icons } from "@/components/icons";
 import ShinyButton from "@/components/ui/shiny-button";
 import { SocialIconLink } from "@/components/social-icon-link";
-import {GithubContributions} from "@/components/github-calendar";
-import {Suspense} from "react";
+import { GithubContributions } from "@/components/github-calendar";
+import { Suspense } from "react";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -132,7 +132,11 @@ export default function Page() {
       <section id="contributions">
         <BlurFade delay={BLUR_FADE_DELAY * 10}>
           <h2 className="text-xl font-bold font-dingtalk">GitHub 贡献</h2>
-          <Suspense fallback={<div className="h-[200px] animate-pulse bg-muted rounded-lg" />}>
+          <Suspense
+            fallback={
+              <div className="h-[200px] animate-pulse bg-muted rounded-lg" />
+            }
+          >
             <GithubContributions />
           </Suspense>
         </BlurFade>
@@ -164,8 +168,8 @@ export default function Page() {
       <section id="contact">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <div className="space-y-4">
-            <h2 className="text-xl font-medium font-dingtalk">联系:</h2>
-            <h2 className="text-md font-medium">请通过电子邮件联系我</h2>
+            <h2 className="text-xl font-medium font-dingtalk">联系方式</h2>
+            <h2 className="text-md font-medium">有想法？发邮件给我吧</h2>
             <a
               href="mailto:hellokaton@gmail.com"
               className="flex items-center gap-2 underline underline-offset-4 hover:opacity-70 transition-opacity"
@@ -175,7 +179,9 @@ export default function Page() {
             </a>
 
             <div className="mt-8">
-              <h2 className="text-md font-medium font-dingtalk">在 X (Twitter) 上和我互动</h2>
+              <h2 className="text-md font-medium font-dingtalk">
+                或者来 X 上和我聊聊天
+              </h2>
 
               <a
                 href={DATA.contact.social.X.url}
