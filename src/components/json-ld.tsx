@@ -14,8 +14,9 @@ export function JsonLd() {
       name: 'Self-Employed'
     },
     sameAs: [
-      'https://github.com/hellokaton',
-      'https://x.com/hellokaton'
+      DATA.contact.social.GitHub.url,
+      DATA.contact.social.Bilibili.url,
+      DATA.contact.social.Douyin.url,
     ],
     knowsAbout: [
       'Web Development',

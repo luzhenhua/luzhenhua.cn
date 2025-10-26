@@ -28,7 +28,7 @@ export function GithubContributions() {
     >
       <div className="py-4 hover:scale-[1.02] transition-transform duration-300 min-w-fit">
         <GitHubCalendar
-          username="hellokaton"
+          username="luzhenhua"
           year={"last"}
           colorScheme={resolvedTheme as "light" | "dark"}
           fontSize={10}

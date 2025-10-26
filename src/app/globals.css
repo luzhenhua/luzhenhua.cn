@@ -233,3 +233,11 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
     transform: rotate(360deg);
   }
 }
+
+/* 自定义 prose 链接样式 */
+@layer base {
+  .prose a {
+    @apply text-foreground no-underline font-medium;
+    @apply hover:text-muted-foreground transition-colors duration-200;
+  }
+}

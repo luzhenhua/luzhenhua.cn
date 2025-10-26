@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://hellokaton.me/sitemap.xml
+Sitemap: https://luzhenhua.cn/sitemap.xml
 
 # Assets
 Allow: /favicons/

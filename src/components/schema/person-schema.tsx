@@ -15,23 +15,18 @@ export function PersonSchema() {
           url: DATA.url,
           sameAs: [
             DATA.contact.social.GitHub.url,
-            DATA.contact.social.X.url,
-            DATA.contact.social.Zhihu.url,
-            DATA.contact.social.Youtube.url,
+            DATA.contact.social.Bilibili.url,
+            DATA.contact.social.Douyin.url,
           ],
-          jobTitle: "Full Stack Developer",
+          jobTitle: "全栈开发者",
           worksFor: {
             "@type": "Organization",
-            name: "Freelance"
-          },
-          alumniOf: {
-            "@type": "CollegeOrUniversity",
-            name: "Trident Academy Of Technology"
+            name: "独立开发者"
           },
           address: {
             "@type": "PostalAddress",
-            addressLocality: "Odisha",
-            addressCountry: "India"
+            addressLocality: DATA.location,
+            addressCountry: "CN"
           },
           email: DATA.contact.email,
           knowsAbout: DATA.skills

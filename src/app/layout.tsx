@@ -25,22 +25,22 @@ const dingTalkFont = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
-    default: "hellokaton / 全栈开发者",
-    template: `%s | hellokaton`,
+    default: `${DATA.name} / 全栈开发者`,
+    template: `%s | ${DATA.name}`,
   },
   description: DATA.description,
-  keywords: ["hellokaton", "Full Stack Developer", "React Developer", "Next.js Developer", "TypeScript Developer", "Node.js Developer", "Web Developer India", "Software Engineer"],
-  authors: [{ name: "hellokaton" }],
-  creator: "hellokaton",
-  publisher: "hellokaton",
+  keywords: [DATA.name, "Full Stack Developer", "React Developer", "Next.js Developer", "TypeScript Developer", "Node.js Developer", "Web Developer", "Software Engineer"],
+  authors: [{ name: DATA.name }],
+  creator: DATA.name,
+  publisher: DATA.name,
   alternates: {
     canonical: DATA.url,
   },
   openGraph: {
-    title: "hellokaton / 全栈开发者",
+    title: `${DATA.name} / 全栈开发者`,
     description: DATA.description,
     url: DATA.url,
-    siteName: "hellokaton - Portfolio",
+    siteName: `${DATA.name} - Portfolio`,
     locale: "zh_CN",
     type: "website",
     images: [
@@ -48,13 +48,13 @@ export const metadata: Metadata = {
         url: `${DATA.url}/portfolio.png`,
         width: 1200,
         height: 630,
-        alt: "hellokaton - Full Stack Developer"
+        alt: `${DATA.name} - Full Stack Developer`
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'hellokaton | Full Stack Developer',
+    title: `${DATA.name} | Full Stack Developer`,
     description: DATA.description,
     images: [`${DATA.url}/portfolio.png`],
   },
@@ -70,40 +70,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [
-      { url: "/favicons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicons/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-    ],
-    apple: [
-      { url: "/favicons/apple-icon-57x57.png", sizes: "57x57", type: "image/png" },
-      { url: "/favicons/apple-icon-60x60.png", sizes: "60x60", type: "image/png" },
-      { url: "/favicons/apple-icon-72x72.png", sizes: "72x72", type: "image/png" },
-      { url: "/favicons/apple-icon-76x76.png", sizes: "76x76", type: "image/png" },
-      { url: "/favicons/apple-icon-114x114.png", sizes: "114x114", type: "image/png" },
-      { url: "/favicons/apple-icon-120x120.png", sizes: "120x120", type: "image/png" },
-      { url: "/favicons/apple-icon-144x144.png", sizes: "144x144", type: "image/png" },
-      { url: "/favicons/apple-icon-152x152.png", sizes: "152x152", type: "image/png" },
-      { url: "/favicons/apple-icon-180x180.png", sizes: "180x180", type: "image/png" },
-    ],
-    other: [
-      {
-        rel: "icon",
-        type: "image/png",
-        sizes: "192x192",
-        url: "/favicons/android-icon-192x192.png",
-      },
-      {
-        rel: "manifest",
-        url: "/favicons/manifest.json",
-      },
-    ],
+    icon: "/favicon.ico",
   },
-  manifest: "/favicons/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "hellokaton",
+    title: DATA.name,
   },
   other: {
     "msapplication-TileColor": "#ffffff",

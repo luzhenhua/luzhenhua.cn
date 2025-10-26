@@ -39,7 +39,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: DATA.username,
     description: DATA.description,
-    creator: "@" + "hellokaton",
     images: [`${DATA.url}/portfolio.png`],
   },
 };
@@ -171,42 +170,46 @@ export default function Page() {
             <h2 className="text-xl font-medium font-dingtalk">联系方式</h2>
             <h2 className="text-md font-medium">有想法？发邮件给我吧</h2>
             <a
-              href="mailto:hellokaton@gmail.com"
+              href={`mailto:${DATA.contact.email}`}
               className="flex items-center gap-2 underline underline-offset-4 hover:opacity-70 transition-opacity"
             >
               <Icons.email className="size-4" />
-              hellokaton@gmail.com
+              {DATA.contact.email}
             </a>
-
-            <div className="mt-8">
-              <h2 className="text-md font-medium font-dingtalk">
-                或者来 X 上和我聊聊天
-              </h2>
-
-              <a
-                href={DATA.contact.social.X.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-4 px-4 py-2 rounded-md bg-foreground text-background hover:opacity-90 transition-opacity"
-              >
-                关注 𝕏
-              </a>
-            </div>
           </div>
         </BlurFade>
       </section>
       <footer className="mt-20 border-t py-8">
         <BlurFade delay={BLUR_FADE_DELAY * 15}>
           <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="flex flex-col items-center space-y-4">
               <div className="text-sm text-muted-foreground">
                 Copyright &copy; {new Date().getFullYear()} {DATA.username}. All
                 rights reserved.
               </div>
+              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs text-muted-foreground">
+                <a
+                  href="https://beian.miit.gov.cn/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors duration-200"
+                >
+                  {DATA.beian.icp}
+                </a>
+                <span className="hidden sm:inline">|</span>
+                <a
+                  href="https://beian.mps.gov.cn/#/query/webSearch"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors duration-200"
+                >
+                  {DATA.beian.police}
+                </a>
+              </div>
               <div className="flex space-x-4">
                 <Link
                   href="/sitemap.xml"
-                  className="text-sm text-muted-foreground hover:text-foreground"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
                 >
                   站点地图
                 </Link>
