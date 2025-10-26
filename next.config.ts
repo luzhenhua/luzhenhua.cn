@@ -3,6 +3,9 @@ const nextConfig: import("next").NextConfig = {
   reactStrictMode: true,
 
   images: {
+    // Disable Next.js Image Optimization on platforms that don't support it
+    // so <Image> renders plain <img> tags and loads assets directly.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -12,7 +15,12 @@ const nextConfig: import("next").NextConfig = {
         protocol: "https",
         hostname: "avatars.githubusercontent.com",
       },
+      {
+        protocol: "https",
+        hostname: "q.qlogo.cn",
+      },
     ],
+    formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60,
   },
 
