@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${DATA.url}/portfolio.png`,
+        url: `${DATA.url}/images/suoluetu.webp`,
         width: 1200,
         height: 630,
         alt: `${DATA.name} - Full Stack Developer`
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${DATA.name} | Full Stack Developer`,
     description: DATA.description,
-    images: [`${DATA.url}/portfolio.png`],
+    images: [`${DATA.url}/images/suoluetu.webp`],
   },
   robots: {
     index: true,
