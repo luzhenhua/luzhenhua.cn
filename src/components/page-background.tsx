@@ -3,9 +3,7 @@
 
 import { usePathname } from 'next/navigation';
 import { MeteorsBackground } from './meteors-background';
-import AnimatedGridPattern from './ui/animated-grid-pattern';
 import GridPattern from './ui/grid-pattern';
-import { InteractiveGridPattern } from './ui/interactive-grid-pattern';
 
 export function PageBackground() {
   const pathname = usePathname();

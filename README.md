@@ -46,8 +46,7 @@ pnpm run dev
 ## 🔧 配置说明
 
 1. 在 `src/data/resume.tsx` 中更新个人信息
-2. 更新 `src/data/products.ts` 来添加推荐产品
-3. 在 `tailwind.config.ts` 中自定义主题颜色
+2. 在 `tailwind.config.ts` 中自定义主题颜色
 
 ## 📁 项目结构
 

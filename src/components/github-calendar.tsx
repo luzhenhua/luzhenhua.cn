@@ -4,10 +4,20 @@ import React from "react";
 import GitHubCalendar from "react-github-calendar";
 import { useTheme } from "next-themes";
 import { motion } from "motion/react";
+import { DATA } from "@/data/resume";
 
 export function GithubContributions() {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
+  const username = React.useMemo(() => {
+    try {
+      const url = DATA.contact.social.GitHub.url;
+      const match = url.match(/github\.com\/(.+?)(?:$|\/)/i);
+      return match?.[1] || "luzhenhua";
+    } catch {
+      return "luzhenhua";
+    }
+  }, []);
 
   React.useEffect(() => {
     setMounted(true);
@@ -28,7 +38,7 @@ export function GithubContributions() {
     >
       <div className="py-4 hover:scale-[1.02] transition-transform duration-300 min-w-fit">
         <GitHubCalendar
-          username="luzhenhua"
+          username={username}
           year={"last"}
           colorScheme={resolvedTheme as "light" | "dark"}
           fontSize={10}

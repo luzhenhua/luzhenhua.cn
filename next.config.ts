@@ -63,10 +63,6 @@ const nextConfig: import("next").NextConfig = {
           value: "max-age=31536000; includeSubDomains",
         },
         {
-          key: "Cache-Control",
-          value: "public, max-age=31536000, immutable",
-        },
-        {
           key: "X-Robots-Tag",
           value: "index, follow",
         },
@@ -76,8 +72,46 @@ const nextConfig: import("next").NextConfig = {
         },
       ],
     },
+    // Long-term caching for Next.js build assets
     {
-      source: "/:all*(mp4|webm)",
+      source: "/_next/static/:path*",
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "public, max-age=31536000, immutable",
+        },
+      ],
+    },
+    // Long-term caching for static assets
+    {
+      source: "/favicons/:path*",
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "public, max-age=31536000, immutable",
+        },
+      ],
+    },
+    {
+      source: "/images/:path*",
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "public, max-age=31536000, immutable",
+        },
+      ],
+    },
+    {
+      source: "/portfolio.png",
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "public, max-age=31536000, immutable",
+        },
+      ],
+    },
+    {
+      source: "/:all*(mp4|webm|svg|jpg|jpeg|png|gif|webp|avif|ico)",
       headers: [
         {
           key: "Cache-Control",
