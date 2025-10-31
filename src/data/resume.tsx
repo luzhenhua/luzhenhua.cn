@@ -17,11 +17,6 @@ export const DATA = {
     "- NCE Flow 开源项目发布三周获得 1k+ Stars，被阮一峰《科技爱好者周刊》第 369 期收录\n" +
     "- 历史作品被 X、抖音、微博、哔哩哔哩上的多名技术博主转载推荐\n" +
     "\n" +
-    "**我的作品**  \n" +
-    ">\n\n" +
-    "- 🎯 [NCE Flow](https://nce.luzhenhua.cn) —— 新概念英语在线点读工具，点句即读，连续播放\n" +
-    "- 🎵 [LyricsCard](https://card.luzhenhua.cn) —— 制作精美的 Apple Music 风格歌词卡片\n" +
-    "\n" +
     "**我喜欢的领域**  \n" +
     ">\n\n" +
     "我喜欢写代码，也喜欢运动和音乐，我从 16 岁开始健身，已经成了习惯。弹琴、听周杰伦，会让我放松下来。我认为最伟大，也是我最喜欢的组织是 Google，其次是 Apple 和 OpenAI，它们让我相信，做好一件事，比说什么都重要。\n" +
@@ -72,6 +67,12 @@ export const DATA = {
         name: "抖音",
         url: "https://www.douyin.com/user/MS4wLjABAAAAe_UbKX_yOC03iIH10AmzlJJSnt_O0CecI1naUtR5qjNKNKd4Gqg8Hw1tyOfeHRLA?from_tab_name=main",
         icon: Icons.douyin,
+        navbar: true,
+      },
+      NetEase: {
+        name: "网易云音乐",
+        url: "https://music.163.com/#/user/home?id=334469730",
+        icon: Icons.netease,
         navbar: true,
       },
       email: {
