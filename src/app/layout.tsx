@@ -77,12 +77,6 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: DATA.name,
   },
-  other: {
-    "msapplication-TileColor": "#ffffff",
-    "msapplication-TileImage": "/favicons/ms-icon-144x144.png",
-    "msapplication-config": "/favicons/browserconfig.xml",
-    "theme-color": "#ffffff",
-  },
 };
 
 export default function RootLayout({

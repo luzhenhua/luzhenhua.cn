@@ -24,14 +24,6 @@ export const metadata: Metadata = {
     description: DATA.description,
     url: DATA.url,
     siteName: DATA.username,
-    images: [
-      {
-        url: `${DATA.url}/portfolio.png`,
-        width: 1200,
-        height: 630,
-        alt: `${DATA.username}'s Portfolio`,
-      },
-    ],
     locale: "zh_CN",
     type: "website",
   },
@@ -39,7 +31,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: DATA.username,
     description: DATA.description,
-    images: [`${DATA.url}/portfolio.png`],
   },
 };
 
