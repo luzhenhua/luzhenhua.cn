@@ -142,5 +142,28 @@ export const DATA = {
       image: "/images/card.webp",
       video: "",
     },
+    {
+      title: "Heart Notes",
+      href: "https://notes.luzhenhua.cn",
+      dates: "2025",
+      active: true,
+      description:
+        "一个优雅的交互式便签墙。",
+      technologies: ["JavaScript", "CSS", "HTML"],
+      links: [
+        {
+          type: "网站",
+          href: "https://notes.luzhenhua.cn",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "源码",
+          href: "https://github.com/luzhenhua/Heart-Notes",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/images/notes.webp",
+      video: "",
+    },
   ],
 } as const;
