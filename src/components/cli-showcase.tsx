@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { JetBrains_Mono } from 'next/font/google';
 import { useTheme } from 'next-themes';
 
