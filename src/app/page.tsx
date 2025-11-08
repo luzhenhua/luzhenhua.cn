@@ -13,6 +13,7 @@ import ShinyButton from "@/components/ui/shiny-button";
 import { SocialIconLink } from "@/components/social-icon-link";
 import { GithubContributions } from "@/components/github-calendar";
 import { Suspense } from "react";
+import { LiveAge } from "@/components/live-age";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -48,11 +49,9 @@ export default function Page() {
                 yOffset={8}
                 text={`👋 嘿，我是 ${DATA.name.split(" ")[0]}`}
               />
-              <BlurFadeText
-                className="max-w-[600px] md:text-xl mt-2 dark:text-slate-300"
-                delay={BLUR_FADE_DELAY}
-                text={DATA.description}
-              />
+              <BlurFade delay={BLUR_FADE_DELAY} className="max-w-[600px] md:text-xl mt-2 dark:text-slate-300">
+                <LiveAge />
+              </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
               <div className="profile-wrapper">

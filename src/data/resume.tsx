@@ -8,9 +8,12 @@ export const DATA = {
   url: "https://luzhenhua.cn",
   location: "China",
   locationLink: "https://www.google.com/maps/place/china",
-  description: "05 后，是一个喜欢折腾的全栈开发者，在学习的路上，也在创造属于自己的作品。",
+  description: "一个喜欢折腾的全栈开发者",
   summary:
-    ">\n\n" +
+    ">>\n\n" +
+    "**我**  \n" +
+    "一个喜欢折腾的全栈开发者，在学习的路上，也在创造属于自己的作品。\n\n" +
+    ">>\n\n" +
     "**我做过的事**  \n" +
     "- 2021 年所运营的「大户爱云任务」，累计服务超 20k 用户的免费自动化助手\n" +
     "- 2022 年和朋友一起上线「不是 Ai」，注册用户近 85k，公众号粉丝近 33k\n" +
