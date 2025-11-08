@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, FolderIcon } from "lucide-react";
+import { HomeIcon, FolderIcon, Terminal } from "lucide-react";
 
 export const DATA = {
   name: "卢振华",
@@ -47,6 +47,7 @@ export const DATA = {
   navbar: [
     { href: "/", icon: HomeIcon, label: "首页" },
     { href: "/projects", icon: FolderIcon, label: "作品" },
+    { href: "/cli", icon: Terminal, label: "CLI" },
   ],
   contact: {
     email: "luzhenhuadev@qq.com",
