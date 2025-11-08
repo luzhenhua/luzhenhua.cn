@@ -131,10 +131,11 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
     
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
     setIsMounted(true);
+    // 手机端不显示艺术字
     setOutput([
-      isMobile ? MOBILE_ASCII_ART : ASCII_ART,
+      ...(isMobile ? [] : [ASCII_ART]),
       '',
       '欢迎来到我的作品集 CLI！👋',
       '输入 "help" 或 "?" 查看可用命令。',
@@ -254,7 +255,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className={`fixed inset-0 ${theme === 'dark' ? 'bg-zinc-900' : 'bg-zinc-50'} ${jetbrainsMono.variable} font-mono overflow-hidden flex flex-col`}
+      className={`fixed inset-0 bg-background ${jetbrainsMono.variable} font-mono overflow-hidden flex flex-col`}
     >
       {/* Terminal Content */}
       <div className="flex-1 overflow-y-auto" ref={outputRef}>
@@ -271,7 +272,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
                   isAsciiArt && "text-[0.45rem] md:text-[0.65rem] leading-tight"
                 )}
               >
-                <span className={theme === 'dark' ? 'text-zinc-200' : 'text-zinc-800'}>
+                <span className="text-foreground">
                   {line.startsWith('http') ? (
                     <a
                       href={line}
@@ -294,7 +295,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
                     className="absolute right-0 top-0 opacity-0 group-hover:opacity-100 transition-opacity"
                     title="Copy to clipboard"
                   >
-                    <Copy className={`h-4 w-4 ${theme === 'dark' ? 'text-zinc-400' : 'text-zinc-500'}`} />
+                    <Copy className="h-4 w-4 text-muted-foreground" />
                   </button>
                 )}
               </div>
@@ -303,7 +304,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
           <div ref={bottomRef} className="h-4" />
 
           {/* Terminal Input */}
-          <form onSubmit={handleSubmit} className={`flex items-center group sticky bottom-0 ${theme === 'dark' ? 'bg-zinc-900/80' : 'bg-zinc-50/80'} backdrop-blur-sm py-2`}>
+          <form onSubmit={handleSubmit} className="flex items-center group sticky bottom-0 bg-background/80 backdrop-blur-sm py-2">
             <span className={theme === 'dark'
               ? 'text-fuchsia-500 [text-shadow:0_0_10px_theme(colors.fuchsia.500/40)] transition-all group-hover:[text-shadow:0_0_15px_theme(colors.fuchsia.500/60)]'
               : 'text-green-600 font-semibold'
@@ -317,7 +318,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              className={`flex-1 bg-transparent outline-none ml-2 ${theme === 'dark' ? 'text-zinc-200 caret-zinc-200' : 'text-zinc-800 caret-zinc-800'} selection:bg-blue-500/30`}
+              className="flex-1 bg-transparent outline-none ml-2 text-foreground caret-foreground selection:bg-blue-500/30"
               autoFocus
               spellCheck={false}
               autoCapitalize="off"
