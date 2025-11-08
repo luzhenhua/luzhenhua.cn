@@ -12,7 +12,6 @@ import { Icons } from "@/components/icons";
 import ShinyButton from "@/components/ui/shiny-button";
 import { SocialIconLink } from "@/components/social-icon-link";
 import { GithubContributions } from "@/components/github-calendar";
-import { Suspense } from "react";
 import { LiveAge } from "@/components/live-age";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -121,13 +120,7 @@ export default function Page() {
       <section id="contributions">
         <BlurFade delay={BLUR_FADE_DELAY * 10}>
           <h2 className="text-xl font-bold font-dingtalk">GitHub 贡献</h2>
-          <Suspense
-            fallback={
-              <div className="h-[200px] animate-pulse bg-muted rounded-lg" />
-            }
-          >
-            <GithubContributions />
-          </Suspense>
+          <GithubContributions />
         </BlurFade>
       </section>
       <section id="projects">

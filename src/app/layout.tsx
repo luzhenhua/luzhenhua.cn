@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
-import { ScrollProgress } from "@/components/scroll-progress";
 import { JsonLd } from "@/components/json-ld";
 import { PageBackground } from "@/components/page-background";
 import { Analytics } from "@vercel/analytics/react";
@@ -101,7 +100,6 @@ export default function RootLayout({
         {/* Main content */}
         <div className="relative z-10 max-w-2xl mx-auto py-12 sm:py-24 px-6">
           <JsonLd />
-          <ScrollProgress />
           <ThemeProvider attribute="class" defaultTheme="dark">
             <TooltipProvider delayDuration={0}>
               {children}

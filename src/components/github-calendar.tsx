@@ -23,6 +23,11 @@ export function GithubContributions() {
     setMounted(true);
   }, []);
 
+  const theme = {
+    light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
+    dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"]
+  };
+
   if (!mounted) {
     return (
       <div className="w-full h-[160px] rounded-xl bg-muted animate-pulse" />
@@ -39,11 +44,10 @@ export function GithubContributions() {
       <div className="py-4 hover:scale-[1.02] transition-transform duration-300 min-w-fit">
         <GitHubCalendar
           username={username}
-          year={"last"}
           colorScheme={resolvedTheme as "light" | "dark"}
-          fontSize={10}
-          blockSize={10}
-          blockMargin={3}
+          fontSize={12}
+          blockSize={12}
+          blockMargin={4}
         />
       </div>
     </motion.div>

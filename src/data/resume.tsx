@@ -24,7 +24,6 @@ export const DATA = {
     ">\n\n" +
     "我喜欢写代码，也喜欢运动和音乐，我从 16 岁开始健身，已经成了习惯。弹琴、听周杰伦，会让我放松下来。我认为最伟大，也是我最喜欢的组织是 Google，其次是 Apple 和 OpenAi，它们让我相信，做好一件事，比说什么都重要。\n" +
     "\n" +
-    "---\n" +
     "🤝 我相信多元与包容，能遇见志同道合的人，对我来说就是件开心的事！",
   avatarUrl: "https://q.qlogo.cn/headimg_dl?dst_uin=3235728982&spec=640&img_type=jpg",
   skills: [
