@@ -6,8 +6,6 @@ import { motion } from 'motion/react';
 import { JetBrains_Mono } from 'next/font/google';
 import { useTheme } from 'next-themes';
 import { Copy } from 'lucide-react';
-import { Button } from './ui/button';
-import ShinyButton from './ui/shiny-button';
 import { cn } from '@/lib/utils';
 
 const jetbrainsMono = JetBrains_Mono({ 
@@ -35,9 +33,6 @@ const MOBILE_ASCII_ART = `
 
 interface CliInterfaceProps {
   onGuiCommand: () => void;
-  onMinimize?: () => void;
-  onMaximize?: () => void;
-  onClose?: () => void;
 }
 
 const ALIASES = {
@@ -117,7 +112,7 @@ function formatCommandLine(line: string, currentTheme: string | undefined) {
   return makeLinksClickable(line);
 }
 
-export function CliInterface({ onGuiCommand, onMinimize, onMaximize, onClose }: CliInterfaceProps) {
+export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
   const [input, setInput] = useState('');
   const [isMobile, setIsMobile] = useState(false);
   const [output, setOutput] = useState<string[]>([]);
@@ -161,7 +156,7 @@ export function CliInterface({ onGuiCommand, onMinimize, onMaximize, onClose }: 
 
   const handleCommand = (cmd: string) => {
     const trimmedCmd = cmd.trim().toLowerCase();
-    const [command, ...args] = trimmedCmd.split(' ');
+    const command = trimmedCmd.split(' ')[0];
 
     // Handle Chinese question mark separately
     let resolvedCmd = command;
