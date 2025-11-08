@@ -3,7 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTheme } from 'next-themes';
 
-export function ForceDarkMode() {
+interface ForceDarkModeProps {
+  onReady?: () => void;
+}
+
+export function ForceDarkMode({ onReady }: ForceDarkModeProps) {
   const { theme, setTheme } = useTheme();
   const [showTransition, setShowTransition] = useState(false);
   const isInitialMount = useRef(true);
@@ -16,18 +20,20 @@ export function ForceDarkMode() {
         // 触发切换动画
         setShowTransition(true);
 
-        // 在动画开始时切换主题
+        // 在动画开始后切换主题
         setTimeout(() => {
           setTheme('dark');
-        }, 200);
+        }, 300);
 
-        // 动画结束后隐藏过渡层
+        // 动画持续1秒，然后通知父组件可以显示内容
         setTimeout(() => {
           setShowTransition(false);
-        }, 800);
+          onReady?.();
+        }, 1000);
       } else {
-        // 已经是深色模式，确保设置为深色
+        // 已经是深色模式，确保设置为深色，立即通知准备就绪
         setTheme('dark');
+        onReady?.();
       }
     }
 
@@ -52,7 +58,7 @@ export function ForceDarkMode() {
         <div
           className="fixed inset-0 z-[9999] pointer-events-none"
           style={{
-            animation: 'fadeInOut 0.8s ease-in-out forwards',
+            animation: 'fadeInOut 1s ease-in-out forwards',
           }}
         >
           {/* Glass morphism 背景 */}
@@ -63,7 +69,7 @@ export function ForceDarkMode() {
             <div
               className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-white/10 dark:bg-black/20 backdrop-blur-xl backdrop-saturate-150 border border-white/20 dark:border-white/10 shadow-2xl"
               style={{
-                animation: 'slideUp 0.5s ease-out forwards',
+                animation: 'slideUp 0.6s ease-out forwards',
               }}
             >
               <svg
@@ -89,10 +95,10 @@ export function ForceDarkMode() {
           0% {
             opacity: 0;
           }
-          20% {
+          15% {
             opacity: 1;
           }
-          80% {
+          85% {
             opacity: 1;
           }
           100% {
@@ -105,9 +111,17 @@ export function ForceDarkMode() {
             opacity: 0;
             transform: translateY(10px);
           }
-          100% {
+          20% {
             opacity: 1;
             transform: translateY(0);
+          }
+          80% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          100% {
+            opacity: 0;
+            transform: translateY(-5px);
           }
         }
       `}</style>
