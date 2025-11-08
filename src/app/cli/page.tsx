@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { CliInterface } from '@/components/cli-interface';
 import { useRouter } from 'next/navigation';
+import { ForceDarkMode } from '@/components/force-dark-mode';
 
 export default function CliPage() {
   const router = useRouter();
@@ -12,6 +12,9 @@ export default function CliPage() {
   };
 
   return (
-    <CliInterface onGuiCommand={handleGuiCommand} />
+    <>
+      <ForceDarkMode />
+      <CliInterface onGuiCommand={handleGuiCommand} />
+    </>
   );
 }

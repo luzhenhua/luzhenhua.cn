@@ -1,3 +1,5 @@
+'use client';
+
 import { Dock, DockIcon } from "@/components/magicui/dock";
 import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
@@ -11,8 +13,15 @@ import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { CliButton } from "@/components/cli-button";
+import { Grid3x3 } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
+  // 在 CLI 和 matrix 页面禁用主题切换按钮
+  const shouldDisableThemeToggle = pathname === '/cli' || pathname === '/matrix';
+
   return (
     <div className="fixed inset-x-0 bottom-0 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14">
       {/* Background blur layer */}
@@ -58,14 +67,33 @@ export default function Navbar() {
         <DockIcon>
           <CliButton />
         </DockIcon>
+        <DockIcon>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href="/matrix"
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "icon" }),
+                  "relative size-12 transition-colors hover:bg-white/20 dark:hover:bg-white/10"
+                )}
+              >
+                <Grid3x3 className="size-4" />
+                <span className="sr-only">Matrix</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent sideOffset={4}>
+              <p>Matrix</p>
+            </TooltipContent>
+          </Tooltip>
+        </DockIcon>
         <Separator orientation="vertical" className="h-full opacity-10 mx-1" />
         <DockIcon>
           <Tooltip>
             <TooltipTrigger asChild>
-              <ModeToggle />
+              <ModeToggle disabled={shouldDisableThemeToggle} />
             </TooltipTrigger>
             <TooltipContent sideOffset={4}>
-              <p>Theme</p>
+              <p>{shouldDisableThemeToggle ? "深色模式已锁定" : "Theme"}</p>
             </TooltipContent>
           </Tooltip>
         </DockIcon>
