@@ -61,15 +61,7 @@ export function ForceDarkMode() {
           {/* 简洁的提示 */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div
-              className="
-                flex items-center gap-3
-                px-6 py-4
-                rounded-2xl
-                bg-white/10 dark:bg-black/20
-                backdrop-blur-xl backdrop-saturate-150
-                border border-white/20 dark:border-white/10
-                shadow-2xl
-              "
+              className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-white/10 dark:bg-black/20 backdrop-blur-xl backdrop-saturate-150 border border-white/20 dark:border-white/10 shadow-2xl"
               style={{
                 animation: 'slideUp 0.5s ease-out forwards',
               }}
