@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { DATA } from '@/data/resume';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { JetBrains_Mono } from 'next/font/google';
 import { useTheme } from 'next-themes';
 import { Copy } from 'lucide-react';
