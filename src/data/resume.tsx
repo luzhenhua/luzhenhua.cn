@@ -19,7 +19,7 @@ export const DATA = {
     "\n" +
     "**我喜欢的领域**  \n" +
     ">\n\n" +
-    "我喜欢写代码，也喜欢运动和音乐，我从 16 岁开始健身，已经成了习惯。弹琴、听周杰伦，会让我放松下来。我认为最伟大，也是我最喜欢的组织是 Google，其次是 Apple 和 OpenAI，它们让我相信，做好一件事，比说什么都重要。\n" +
+    "我喜欢写代码，也喜欢运动和音乐，我从 16 岁开始健身，已经成了习惯。弹琴、听周杰伦，会让我放松下来。我认为最伟大，也是我最喜欢的组织是 Google，其次是 Apple 和 OpenAi，它们让我相信，做好一件事，比说什么都重要。\n" +
     "\n" +
     "---\n" +
     "🤝 我相信多元与包容，能遇见志同道合的人，对我来说就是件开心的事！",
@@ -163,6 +163,29 @@ export const DATA = {
         },
       ],
       image: "/images/notes.webp",
+      video: "",
+    },
+    {
+      title: "Time",
+      href: "https://time.luzhenhua.cn",
+      dates: "2025",
+      active: true,
+      description:
+        "个人摄影作品图集。",
+      technologies: ["Thanks for chronoframe"],
+      links: [
+        {
+          type: "网站",
+          href: "https://time.luzhenhua.cn",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "源码",
+          href: "https://github.com/HoshinoSuzumi/chronoframe",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/images/time.webp",
       video: "",
     },
   ],
