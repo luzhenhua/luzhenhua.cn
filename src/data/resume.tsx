@@ -181,9 +181,9 @@ export const DATA = {
       description:
         "喜茶自定义 Diy 杯贴网页版工具。",
       technologies: [
-        "TypeScript 91.1%",
-        "JavaScript 6.9%",
-        "CSS 2.0%",
+        "TypeScript",
+        "JavaScript",
+        "CSS",
       ],
       links: [
         {
