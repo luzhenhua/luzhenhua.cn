@@ -17,6 +17,8 @@ export function JsonLd() {
       DATA.contact.social.GitHub.url,
       DATA.contact.social.Bilibili.url,
       DATA.contact.social.Douyin.url,
+      DATA.contact.social.Xiaohongshu.url,
+      DATA.contact.social.NetEase.url,
     ],
     knowsAbout: [
       'Web Development',

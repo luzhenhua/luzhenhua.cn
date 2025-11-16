@@ -71,6 +71,12 @@ export const DATA = {
         icon: Icons.douyin,
         navbar: true,
       },
+      Xiaohongshu: {
+        name: "小红书",
+        url: "https://www.xiaohongshu.com/user/profile/6554bb560000000002035357",
+        icon: Icons.xiaohongshu,
+        navbar: true,
+      },
       NetEase: {
         name: "网易云音乐",
         url: "https://music.163.com/#/user/home?id=334469730",
@@ -168,26 +174,35 @@ export const DATA = {
       video: "",
     },
     {
-      title: "Time",
-      href: "https://time.luzhenhua.cn",
+      title: "喜茶Diy杯贴",
+      href: "https://diy.luzhenhua.cn",
       dates: "2025",
       active: true,
       description:
-        "个人摄影作品图集。",
-      technologies: ["Thanks for chronoframe"],
+        "喜茶自定义 Diy 杯贴网页版工具。",
+      technologies: [
+        "TypeScript 91.1%",
+        "JavaScript 6.9%",
+        "CSS 2.0%",
+      ],
       links: [
         {
           type: "网站",
-          href: "https://time.luzhenhua.cn",
+          href: "https://diy.luzhenhua.cn",
           icon: <Icons.globe className="size-3" />,
         },
         {
           type: "源码",
-          href: "https://github.com/HoshinoSuzumi/chronoframe",
+          href: "https://github.com/luzhenhua/heytea",
           icon: <Icons.github className="size-3" />,
         },
+        {
+          type: "原帖",
+          href: "http://xhslink.com/o/4NUYhjXmUUv",
+          icon: <Icons.xiaohongshu className="size-3" />,
+        },
       ],
-      image: "/images/time.webp",
+      image: "/images/diy.webp",
       video: "",
     },
   ],
