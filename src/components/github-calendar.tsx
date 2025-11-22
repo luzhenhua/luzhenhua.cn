@@ -9,6 +9,7 @@ import { DATA } from "@/data/resume";
 export function GithubContributions() {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
   const username = React.useMemo(() => {
     try {
       const url = DATA.contact.social.GitHub.url;
@@ -23,10 +24,17 @@ export function GithubContributions() {
     setMounted(true);
   }, []);
 
-  const theme = {
-    light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
-    dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"]
-  };
+  // 滚动到最新的月份（最右边）
+  React.useEffect(() => {
+    if (mounted && containerRef.current) {
+      // 使用 setTimeout 确保 DOM 已完全渲染
+      setTimeout(() => {
+        if (containerRef.current) {
+          containerRef.current.scrollLeft = containerRef.current.scrollWidth;
+        }
+      }, 100);
+    }
+  }, [mounted]);
 
   if (!mounted) {
     return (
@@ -36,6 +44,7 @@ export function GithubContributions() {
 
   return (
     <motion.div
+      ref={containerRef}
       className="w-full overflow-x-auto overflow-y-hidden rounded-xl bg-card hover:shadow-lg transition-shadow duration-300 py-4"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
