@@ -1,9 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useTranslations } from "@/components/language-provider";
 
 export function LiveAge() {
   const [years, setYears] = useState<string>('0.000000000');
+  const t = useTranslations();
 
   useEffect(() => {
     const calculateYears = () => {
@@ -33,5 +35,5 @@ export function LiveAge() {
     return () => clearInterval(interval);
   }, []);
 
-  return <span>截至目前，我来到地球已经 {years} 年</span>;
+  return <span>{t("liveAgeText", { years })}</span>;
 }

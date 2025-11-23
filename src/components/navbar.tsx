@@ -9,18 +9,21 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { CliButton } from "@/components/cli-button";
-import { Grid3x3 } from "lucide-react";
+import { Grid3x3, Languages } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useLanguage, useTranslations } from "@/components/language-provider";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { data, locale, setLocale } = useLanguage();
+  const t = useTranslations();
 
   // 在 CLI 和 matrix 页面禁用主题切换按钮
-  const shouldDisableThemeToggle = pathname === '/cli' || pathname === '/matrix';
+  const shouldDisableThemeToggle = pathname === "/cli" || pathname === "/matrix";
+  const nextLocale = locale === "en" ? "zh" : "en";
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14">
@@ -43,7 +46,7 @@ export default function Navbar() {
         dark:hover:bg-black/30 dark:hover:border-white/15 dark:hover:[box-shadow:0_8px_20px_rgba(0,0,0,0.4),inset_0_0_0_1px_rgba(255,255,255,0.07),0_0_0_1px_rgba(0,0,0,0.2)]
         before:absolute before:inset-0 before:pointer-events-none before:rounded-2xl before:bg-gradient-to-b before:from-white/5 before:to-transparent before:dark:from-white/5
         after:absolute after:inset-0 after:pointer-events-none after:rounded-2xl after:bg-[radial-gradient(circle_at_50%_-20%,rgba(255,255,255,0.15),transparent_70%)] after:dark:bg-[radial-gradient(circle_at_50%_-20%,rgba(255,255,255,0.08),transparent_70%)]">
-        {DATA.navbar.map((item) => (
+        {data.navbar.map((item) => (
           <DockIcon key={item.href}>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -90,10 +93,35 @@ export default function Navbar() {
         <DockIcon>
           <Tooltip>
             <TooltipTrigger asChild>
+              <button
+                type="button"
+                onClick={() => setLocale(nextLocale)}
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "icon" }),
+                  "relative size-12 transition-colors hover:bg-white/20 dark:hover:bg-white/10"
+                )}
+                aria-label={t("languageToggleAria")}
+              >
+                <Languages className="size-4" />
+                <span className="sr-only">{t("languageToggleAria")}</span>
+              </button>
+            </TooltipTrigger>
+            <TooltipContent sideOffset={4}>
+              <p>{t("languageToggleTooltip")}</p>
+            </TooltipContent>
+          </Tooltip>
+        </DockIcon>
+        <DockIcon>
+          <Tooltip>
+            <TooltipTrigger asChild>
               <ModeToggle disabled={shouldDisableThemeToggle} />
             </TooltipTrigger>
             <TooltipContent sideOffset={4}>
-              <p>{shouldDisableThemeToggle ? "深色模式已锁定" : "Theme"}</p>
+              <p>
+                {shouldDisableThemeToggle
+                  ? t("themeToggleLocked")
+                  : t("themeLabel")}
+              </p>
             </TooltipContent>
           </Tooltip>
         </DockIcon>

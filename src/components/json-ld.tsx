@@ -8,7 +8,7 @@ export function JsonLd() {
     givenName: DATA.username,
     familyName: DATA.username,
     url: DATA.url,
-    jobTitle: '全栈开发者',
+    jobTitle: "Full Stack Developer",
     worksFor: {
       '@type': 'Organization',
       name: 'Self-Employed'

@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { DATA } from '@/data/resume';
+import { useState, useEffect, useRef, useMemo } from "react";
 import { motion } from 'motion/react';
 import { JetBrains_Mono } from 'next/font/google';
 import { useTheme } from 'next-themes';
 import { Copy } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLanguage, useTranslations } from "@/components/language-provider";
 
 const jetbrainsMono = JetBrains_Mono({ 
   subsets: ['latin'],
@@ -14,15 +14,6 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const ASCII_ART = `
-███████╗██╗  ██╗███████╗███╗   ██╗██╗  ██╗██╗   ██╗ █████╗     ██╗     ██╗   ██╗
-╚══███╔╝██║  ██║██╔════╝████╗  ██║██║  ██║██║   ██║██╔══██╗    ██║     ██║   ██║
-  ███╔╝ ███████║█████╗  ██╔██╗ ██║███████║██║   ██║███████║    ██║     ██║   ██║
- ███╔╝  ██╔══██║██╔══╝  ██║╚██╗██║██╔══██║██║   ██║██╔══██║    ██║     ██║   ██║
-███████╗██║  ██║███████╗██║ ╚████║██║  ██║╚██████╔╝██║  ██║    ███████╗╚██████╔╝
-╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝    ╚══════╝ ╚═════╝
-`;
-
-const MOBILE_ASCII_ART = `
 ███████╗██╗  ██╗███████╗███╗   ██╗██╗  ██╗██╗   ██╗ █████╗     ██╗     ██╗   ██╗
 ╚══███╔╝██║  ██║██╔════╝████╗  ██║██║  ██║██║   ██║██╔══██╗    ██║     ██║   ██║
   ███╔╝ ███████║█████╗  ██╔██╗ ██║███████║██║   ██║███████║    ██║     ██║   ██║
@@ -48,33 +39,7 @@ const ALIASES = {
   t: 'theme',
 };
 
-const COMMANDS = {
-  help: '可用命令：\n\n' +
-    'help       - 显示此帮助信息\n' +
-    'about      - 显示关于我的信息\n' +
-    'skills     - 列出我的技术技能\n' +
-    'projects   - 列出我的项目\n' +
-    'contact    - 显示联系方式\n' +
-    'social     - 显示社交媒体链接\n' +
-    'version    - 显示 CLI 版本\n' +
-    'clear      - 清空终端\n' +
-    'gui        - 切换到 GUI 模式\n\n' +
-    '提示：使用 Tab 键自动补全命令，使用 ↑↓ 键浏览命令历史',
-  about: () => `${DATA.name}\n${DATA.description}\n\n${DATA.summary}`,
-  skills: () => `技能：\n${DATA.skills.join('、')}`,
-  projects: () => DATA.projects.map(project =>
-    `\n${project.title}\n${project.description}\n技术栈：${project.technologies.join('、')}\n`
-  ).join('\n'),
-  contact: () => `邮箱：${DATA.contact.email}`,
-  social: () => Object.entries(DATA.contact.social)
-    .map(([platform, data]) => `${platform}：${data.url}`)
-    .join('\n'),
-  version: () => 'luzhenhua.cn CLI v1.0.0',
-  clear: 'CLEAR',
-  gui: 'GUI',
-};
-
-type CommandType = keyof typeof COMMANDS;
+type CommandValue = string | (() => string);
 
 function makeLinksClickable(text: string) {
   const urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -122,7 +87,38 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
+  const hasInitializedRef = useRef(false);
   const { theme } = useTheme();
+  const { data, locale } = useLanguage();
+  const t = useTranslations();
+  const delimiter = locale === "zh" ? "、" : ", ";
+  const colon = locale === "zh" ? "：" : ": ";
+  const copyTooltip = locale === "zh" ? "复制到剪贴板" : "Copy to clipboard";
+  const copiedLabel = locale === "zh" ? "已复制!" : "Copied!";
+
+  const commands = useMemo<Record<string, CommandValue>>(
+    () => ({
+      help: t("cliHelp"),
+      about: () => `${data.name}\n${data.description}\n\n${data.summary}`,
+      skills: () => `${t("cliSkillsHeading")}:\n${data.skills.join(delimiter)}`,
+      projects: () =>
+        data.projects
+          .map(
+            (project) =>
+              `\n${project.title}\n${project.description}\n${t("cliProjectsTechLabel")}${colon}${project.technologies.join(delimiter)}\n`
+          )
+          .join("\n"),
+      contact: () => `${t("cliContactLabel")}${colon}${data.contact.email}`,
+      social: () =>
+        Object.values(data.contact.social)
+          .map((entry) => `${entry.name}${colon}${entry.url}`)
+          .join("\n"),
+      version: () => "luzhenhua.cn CLI v1.0.0",
+      clear: "CLEAR",
+      gui: "GUI",
+    }),
+    [colon, data, delimiter, t]
+  );
 
   useEffect(() => {
     const checkMobile = () => {
@@ -133,20 +129,23 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
     window.addEventListener('resize', checkMobile);
 
     setIsMounted(true);
-    // 手机端不显示艺术字
-    setOutput([
-      ...(isMobile ? [] : [ASCII_ART]),
-      '',
-      '欢迎来到我的作品集 CLI！👋',
-      '输入 "help" 或 "?" 查看可用命令。',
-      ''
-    ]);
+    if (!hasInitializedRef.current) {
+      setOutput([
+        ...(isMobile ? [] : [ASCII_ART]),
+        "",
+        t("cliWelcomeLineOne"),
+        t("cliWelcomeLineTwo"),
+        "",
+      ]);
+      hasInitializedRef.current = true;
+    }
 
     return () => {
       window.removeEventListener('resize', checkMobile);
       setIsMounted(false);
     };
-  }, [isMobile]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobile, t]);
 
   // Scroll to bottom when output changes
   useEffect(() => {
@@ -173,20 +172,20 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
     }
 
     if (resolvedCmd === 'gui') {
-      setOutput(prev => [...prev, `$ ${cmd}`, '正在切换到 GUI 模式...', '']);
+      setOutput(prev => [...prev, `$ ${cmd}`, t("cliSwitchingGui"), '']);
       setTimeout(onGuiCommand, 500);
       return;
     }
 
     if (resolvedCmd === 'theme' || resolvedCmd === 't') {
-      setOutput(prev => [...prev, `$ ${cmd}`, '请使用底部导航栏切换主题', '']);
+      setOutput(prev => [...prev, `$ ${cmd}`, t("cliThemeLockedMessage"), '']);
       return;
     }
 
-    const result = COMMANDS[resolvedCmd as CommandType];
+    const result = commands[resolvedCmd];
 
     if (!result) {
-      setOutput(prev => [...prev, `$ ${cmd}`, `命令未找到：${cmd}。输入 "help" 查看可用命令。`, '']);
+      setOutput(prev => [...prev, `$ ${cmd}`, t("cliCommandNotFound", { command: cmd }), '']);
       return;
     }
 
@@ -224,7 +223,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
       }
     } else if (e.key === 'Tab') {
       e.preventDefault();
-      const availableCommands = [...Object.keys(COMMANDS), ...Object.keys(ALIASES)];
+      const availableCommands = [...Object.keys(commands), ...Object.keys(ALIASES)];
       const matches = availableCommands.filter(cmd => cmd.startsWith(input.toLowerCase()));
       if (matches.length === 1) {
         setInput(matches[0]);
@@ -239,7 +238,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
       const button = document.activeElement as HTMLButtonElement;
       if (button) {
         const originalText = button.innerHTML;
-        button.innerHTML = 'Copied!';
+        button.innerHTML = copiedLabel;
         setTimeout(() => {
           button.innerHTML = originalText;
         }, 1000);
@@ -293,7 +292,7 @@ export function CliInterface({ onGuiCommand }: CliInterfaceProps) {
                   <button
                     onClick={() => copyToClipboard(line)}
                     className="absolute right-0 top-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                    title="Copy to clipboard"
+                    title={copyTooltip}
                   >
                     <Copy className="h-4 w-4 text-muted-foreground" />
                   </button>

@@ -9,8 +9,11 @@ import {
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useTranslations } from "@/components/language-provider";
 
 export function CliButton() {
+  const t = useTranslations();
+
   return (
     <Tooltip>
       <TooltipTrigger asChild>
@@ -22,12 +25,12 @@ export function CliButton() {
           )}
         >
           <Terminal className="size-4" />
-          <span className="sr-only">CLI Mode</span>
+          <span className="sr-only">{t("cliModeLabel")}</span>
         </Link>
       </TooltipTrigger>
       <TooltipContent sideOffset={4}>
-        <p>CLI Mode</p>
+        <p>{t("cliModeLabel")}</p>
       </TooltipContent>
     </Tooltip>
   );
-} 
+}

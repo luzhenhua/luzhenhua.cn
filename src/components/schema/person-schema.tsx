@@ -19,10 +19,10 @@ export function PersonSchema() {
             DATA.contact.social.Xiaohongshu.url,
             DATA.contact.social.NetEase.url,
           ],
-          jobTitle: "全栈开发者",
+          jobTitle: "Full Stack Developer",
           worksFor: {
             "@type": "Organization",
-            name: "独立开发者"
+            name: "Independent Developer"
           },
           address: {
             "@type": "PostalAddress",

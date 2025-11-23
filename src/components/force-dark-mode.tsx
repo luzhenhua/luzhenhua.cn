@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useTheme } from 'next-themes';
+import { useTranslations } from "@/components/language-provider";
 
 interface ForceDarkModeProps {
   onReady?: () => void;
@@ -11,6 +12,7 @@ export function ForceDarkMode({ onReady }: ForceDarkModeProps) {
   const { theme, setTheme } = useTheme();
   const [showTransition, setShowTransition] = useState(false);
   const isInitialMount = useRef(true);
+  const t = useTranslations();
 
   useEffect(() => {
     // 首次挂载时，如果不是深色主题，显示切换效果
@@ -84,7 +86,7 @@ export function ForceDarkMode({ onReady }: ForceDarkModeProps) {
                 />
               </svg>
               <span className="text-sm font-medium text-white/90">
-                深色模式
+                {t("forceDarkModeLabel")}
               </span>
             </div>
           </div>

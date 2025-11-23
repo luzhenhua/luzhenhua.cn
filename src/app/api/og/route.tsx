@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
               textAlign: "center",
             }}
           >
-            全栈工程师 | React/Next.js 专家
+            Full-stack engineer · React / Next.js specialist
           </h2>
         </div>
       </div>

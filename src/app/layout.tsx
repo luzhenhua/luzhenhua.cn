@@ -10,6 +10,10 @@ import { JsonLd } from "@/components/json-ld";
 import { PageBackground } from "@/components/page-background";
 import { Analytics } from "@vercel/analytics/react";
 import localFont from "next/font/local";
+import { LanguageProvider } from "@/components/language-provider";
+import { LanguagePrompt } from "@/components/language-prompt";
+import { LanguageContentWrapper } from "@/components/language-content-wrapper";
+import { LoadingOverlay } from "@/components/loading-overlay";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -31,11 +35,20 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
-    default: `${DATA.name} / 全栈开发者`,
+    default: `${DATA.name} / Full Stack Developer`,
     template: `%s | ${DATA.name}`,
   },
   description: DATA.description,
-  keywords: [DATA.name, "Full Stack Developer", "React Developer", "Next.js Developer", "TypeScript Developer", "Node.js Developer", "Web Developer", "Software Engineer"],
+  keywords: [
+    DATA.name,
+    "Full Stack Developer",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript Developer",
+    "Node.js Developer",
+    "Web Developer",
+    "Software Engineer",
+  ],
   authors: [{ name: DATA.name }],
   creator: DATA.name,
   publisher: DATA.name,
@@ -43,23 +56,23 @@ export const metadata: Metadata = {
     canonical: DATA.url,
   },
   openGraph: {
-    title: `${DATA.name} / 全栈开发者`,
+    title: `${DATA.name} / Full Stack Developer`,
     description: DATA.description,
     url: DATA.url,
     siteName: `${DATA.name} - Portfolio`,
-    locale: "zh_CN",
+    locale: "en_US",
     type: "website",
     images: [
       {
         url: `${DATA.url}/images/suoluetu.webp`,
         width: 1200,
         height: 630,
-        alt: `${DATA.name} - Full Stack Developer`
-      }
-    ]
+        alt: `${DATA.name} - Full Stack Developer`,
+      },
+    ],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: `${DATA.name} | Full Stack Developer`,
     description: DATA.description,
     images: [`${DATA.url}/images/suoluetu.webp`],
@@ -70,9 +83,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   icons: {
@@ -109,9 +122,15 @@ export default function RootLayout({
           <JsonLd />
           <ThemeProvider attribute="class" defaultTheme="dark">
             <TooltipProvider delayDuration={0}>
-              {children}
-              <Analytics />
-              <Navbar />
+              <LanguageProvider>
+                <LoadingOverlay />
+                <LanguageContentWrapper>
+                  {children}
+                  <LanguagePrompt />
+                  <Analytics />
+                  <Navbar />
+                </LanguageContentWrapper>
+              </LanguageProvider>
             </TooltipProvider>
           </ThemeProvider>
         </div>
