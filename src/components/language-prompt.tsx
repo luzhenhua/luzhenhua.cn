@@ -36,7 +36,7 @@ export function LanguagePrompt() {
   return (
     <div className="fixed inset-x-4 top-4 sm:top-6 sm:left-1/2 sm:-translate-x-1/2 z-50 flex justify-center pointer-events-none animate-slideDown">
       <div
-        className="pointer-events-auto w-full max-w-2xl rounded-full border border-white/20 bg-background/80 px-4 py-3 sm:px-6 shadow-[0_20px_60px_rgba(15,23,42,0.35)] backdrop-blur-xl flex flex-col gap-3 sm:flex-row sm:items-center animate-breathe"
+        className="pointer-events-auto w-full max-w-2xl rounded-2xl sm:rounded-full border border-white/20 bg-background/80 px-4 py-4 sm:px-6 sm:py-3 shadow-[0_20px_60px_rgba(15,23,42,0.35)] backdrop-blur-xl flex flex-col gap-4 sm:gap-3 sm:flex-row sm:items-center animate-breathe"
         role="alertdialog"
         aria-labelledby="language-switch-title"
         aria-describedby="language-switch-description"
@@ -45,7 +45,7 @@ export function LanguagePrompt() {
           <div className="shrink-0 h-10 w-10 rounded-full bg-primary/15 text-primary flex items-center justify-center shadow-inner">
             <Languages className="size-4" />
           </div>
-          <div className="space-y-0.5">
+          <div className="space-y-0.5 flex-1">
             <p id="language-switch-title" className="text-sm font-semibold text-foreground">
               {title}
             </p>
@@ -57,11 +57,11 @@ export function LanguagePrompt() {
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-2 sm:ml-auto">
+        <div className="flex items-center justify-end gap-2 sm:ml-auto">
           <button
             className={cn(
               buttonVariants({ variant: "ghost" }),
-              "font-medium text-xs px-3 py-1.5 text-muted-foreground"
+              "font-medium text-xs px-4 py-2 sm:px-3 sm:py-1.5 text-muted-foreground"
             )}
             onClick={dismissPrompt}
           >
@@ -70,7 +70,7 @@ export function LanguagePrompt() {
           <button
             className={cn(
               buttonVariants({ variant: "default" }),
-              "font-medium text-xs px-3 py-1.5"
+              "font-medium text-xs px-4 py-2 sm:px-3 sm:py-1.5"
             )}
             onClick={acceptChinesePrompt}
           >
