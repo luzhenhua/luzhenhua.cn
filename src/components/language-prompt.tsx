@@ -18,7 +18,7 @@ export function LanguagePrompt() {
   useEffect(() => {
     let timer: number | undefined;
     if (showChinesePrompt) {
-      timer = window.setTimeout(() => setIsReady(true), 180);
+      timer = window.setTimeout(() => setIsReady(true), 800);
     } else {
       setIsReady(false);
     }
@@ -34,18 +34,18 @@ export function LanguagePrompt() {
   }
 
   return (
-    <div className="fixed inset-x-4 top-4 sm:top-6 sm:left-1/2 sm:-translate-x-1/2 z-50 flex justify-center pointer-events-none animate-slideDown">
+    <div className="fixed inset-x-4 bottom-4 sm:bottom-auto sm:top-6 sm:inset-x-0 z-50 flex justify-center pointer-events-none animate-slideUp sm:animate-slideDown">
       <div
-        className="pointer-events-auto w-full max-w-2xl rounded-2xl sm:rounded-full border border-white/20 bg-background/80 px-4 py-4 sm:px-6 sm:py-3 shadow-[0_20px_60px_rgba(15,23,42,0.35)] backdrop-blur-xl flex flex-col gap-4 sm:gap-3 sm:flex-row sm:items-center animate-breathe"
+        className="pointer-events-auto w-full max-w-2xl rounded-lg sm:rounded-full border border-white/20 bg-background/90 px-5 py-5 sm:px-6 sm:py-3 shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] backdrop-blur-xl flex flex-col gap-4 sm:gap-3 sm:flex-row sm:items-center animate-breathe"
         role="alertdialog"
         aria-labelledby="language-switch-title"
         aria-describedby="language-switch-description"
       >
-        <div className="flex items-center gap-3">
-          <div className="shrink-0 h-10 w-10 rounded-full bg-primary/15 text-primary flex items-center justify-center shadow-inner">
+        <div className="flex items-start sm:items-center gap-3">
+          <div className="shrink-0 h-9 w-9 sm:h-10 sm:w-10 rounded-lg sm:rounded-full bg-primary/10 text-primary flex items-center justify-center">
             <Languages className="size-4" />
           </div>
-          <div className="space-y-0.5 flex-1">
+          <div className="space-y-1 sm:space-y-0.5 flex-1 min-w-0">
             <p id="language-switch-title" className="text-sm font-semibold text-foreground">
               {title}
             </p>
@@ -57,11 +57,11 @@ export function LanguagePrompt() {
             </p>
           </div>
         </div>
-        <div className="flex items-center justify-end gap-2 sm:ml-auto">
+        <div className="flex items-center gap-3 sm:gap-2 sm:ml-auto">
           <button
             className={cn(
               buttonVariants({ variant: "ghost" }),
-              "font-medium text-xs px-4 py-2 sm:px-3 sm:py-1.5 text-muted-foreground"
+              "flex-1 sm:flex-none font-medium text-sm sm:text-xs h-9 sm:h-auto px-4 sm:px-3 sm:py-1.5 text-muted-foreground"
             )}
             onClick={dismissPrompt}
           >
@@ -70,7 +70,7 @@ export function LanguagePrompt() {
           <button
             className={cn(
               buttonVariants({ variant: "default" }),
-              "font-medium text-xs px-4 py-2 sm:px-3 sm:py-1.5"
+              "flex-1 sm:flex-none font-medium text-sm sm:text-xs h-9 sm:h-auto px-4 sm:px-3 sm:py-1.5"
             )}
             onClick={acceptChinesePrompt}
           >
@@ -95,8 +95,26 @@ export function LanguagePrompt() {
             );
           }
         }
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
         :global(.animate-slideDown) {
-          animation: slideDown 0.5s ease forwards;
+          animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        :global(.animate-slideUp) {
+          animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @media (min-width: 640px) {
+          :global(.sm\\:animate-slideDown) {
+            animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          }
         }
         @keyframes breathe {
           0% {
