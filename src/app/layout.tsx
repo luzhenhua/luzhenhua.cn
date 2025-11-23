@@ -14,6 +14,7 @@ import { LanguageProvider } from "@/components/language-provider";
 import { LanguagePrompt } from "@/components/language-prompt";
 import { LanguageContentWrapper } from "@/components/language-content-wrapper";
 import { LoadingOverlay } from "@/components/loading-overlay";
+import { ChunkReloadListener } from "@/components/chunk-reload-listener";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -123,6 +124,7 @@ export default function RootLayout({
           <ThemeProvider attribute="class" defaultTheme="dark">
             <TooltipProvider delayDuration={0}>
               <LanguageProvider>
+                <ChunkReloadListener />
                 <LoadingOverlay />
                 <LanguageContentWrapper>
                   {children}
