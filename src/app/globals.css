@@ -199,6 +199,13 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .profile-wrapper::before,
+  .profile-wrapper:hover::before {
+    animation: none;
+  }
+}
+
 /* 自定义 prose 链接样式 */
 @layer base {
   .prose a {

@@ -82,11 +82,17 @@ export function LanguagePrompt() {
         @keyframes slideDown {
           from {
             opacity: 0;
-            transform: translate(-50%, -20px);
+            transform: translate(
+              var(--tw-translate-x, 0),
+              calc(var(--tw-translate-y, 0) - 20px)
+            );
           }
           to {
             opacity: 1;
-            transform: translate(-50%, 0);
+            transform: translate(
+              var(--tw-translate-x, 0),
+              var(--tw-translate-y, 0)
+            );
           }
         }
         :global(.animate-slideDown) {
@@ -94,13 +100,22 @@ export function LanguagePrompt() {
         }
         @keyframes breathe {
           0% {
-            transform: translateY(0);
+            transform: translate(
+              var(--tw-translate-x, 0),
+              var(--tw-translate-y, 0)
+            );
           }
           50% {
-            transform: translateY(2px);
+            transform: translate(
+              var(--tw-translate-x, 0),
+              calc(var(--tw-translate-y, 0) + 2px)
+            );
           }
           100% {
-            transform: translateY(0);
+            transform: translate(
+              var(--tw-translate-x, 0),
+              var(--tw-translate-y, 0)
+            );
           }
         }
         :global(.animate-breathe) {
