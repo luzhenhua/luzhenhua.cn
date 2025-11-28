@@ -10,6 +10,7 @@ import { JsonLd } from "@/components/json-ld";
 import { PageBackground } from "@/components/page-background";
 import { Analytics } from "@vercel/analytics/react";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { LanguageProvider } from "@/components/language-provider";
 import { LanguagePrompt } from "@/components/language-prompt";
 import { LanguageContentWrapper } from "@/components/language-content-wrapper";
@@ -130,6 +131,18 @@ export default function RootLayout({
                   {children}
                   <LanguagePrompt />
                   <Analytics />
+                  <Script
+                    id="clarity-script"
+                    strategy="afterInteractive"
+                  >
+                    {`
+                      (function(c,l,a,r,i,t,y){
+                        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                      })(window, document, "clarity", "script", "ud71c4ycs0");
+                    `}
+                  </Script>
                   <Navbar />
                 </LanguageContentWrapper>
               </LanguageProvider>
